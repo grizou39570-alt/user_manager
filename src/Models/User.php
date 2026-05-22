@@ -14,7 +14,6 @@ class User
   private $roleId;
   private $password;
 
-
   public function __construct()
   {
     $this->db = Database::getInstance()->getConnection();
@@ -84,12 +83,12 @@ class User
 
   public function getAll(): array
   {
-    $query = "SELECT  users.id, users.nom, users.email, roles.nom as role_nom
+    $query = "SELECT users.id, users.nom, users.email, users.roleId as role_id, roles.nom as role_nom
                  FROM users
                  JOIN roles ON users.roleId = roles.id";
     $stmt = $this->db->query($query);
 
-    return $stmt->fetchAll();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
   public static function findById(int $id)

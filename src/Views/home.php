@@ -60,10 +60,19 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
           <th class="user-table__cell user-table__cell--heading">Nom</th>
           <th class="user-table__cell user-table__cell--heading">Email</th>
           <th class="user-table__cell user-table__cell--heading">Rôle</th>
-          <th class="user-table__cell user-table__cell--heading">Actions</th>
+          <?php if (isset($_SESSION['role']) && (int)$_SESSION['role'] === 1): ?>
+            <th class="user-table__cell user-table__cell--heading">Actions</th>
+          <?php endif; ?>
         </tr>
       </thead>
       <tbody class="user-table__body">
+        <?php if (!isset($_SESSION["user_id"])): ?>
+          <tr>
+            <td colspan='5' class='user-table__cell'>Veuillez vous connecter pour voir les utilisateurs.</td>
+          </tr>
+          <?php die(); ?>
+        <?php endif; ?>
+
         <?php foreach ($users as $user): ?>
           <tr class="user-table__row">
             <td class="user-table__cell"><?= htmlspecialchars($user['id']) ?></td>
@@ -75,8 +84,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
               </span>
             </td>
             <td class="user-table__cell user-table__cell--actions">
-              <a href="/edit?id=<?= $user['id'] ?>" class="button button--edit">Modifier</a>
-              <a href="/delete?id=<?= $user['id'] ?>" class="button button--delete delete-button">Supprimer</a>
+              <?php if (isset($_SESSION['role']) && (int)$_SESSION['role'] === 1): ?>
+                <a href="/edit?id=<?= $user['id'] ?>" class="button button--edit">Modifier</a>
+                <a href="/delete?id=<?= $user['id'] ?>" class="button button--delete delete-button">Supprimer</a>
+                <span class="admin-badge">Admin</span>
+              <?php endif; ?>
             </td>
           </tr>
         <?php endforeach; ?>

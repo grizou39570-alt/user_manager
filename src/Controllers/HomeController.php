@@ -13,6 +13,15 @@ class HomeController
     $userModel = new User();
     $users = $userModel->getAll();
 
+    // ensure session started and role stored for the current user
+    if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+    if (isset($_SESSION['user_id']) && !isset($_SESSION['role'])) {
+      $current = User::findById((int) $_SESSION['user_id']);
+      if ($current !== null) {
+        $_SESSION['role'] = $current->getRoleId();
+      }
+    }
+
     require_once __DIR__ . '/../Views/home.php';
   }
 
