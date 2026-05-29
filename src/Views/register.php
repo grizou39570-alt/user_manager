@@ -4,20 +4,18 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <title>Register</title>
+    <link rel="stylesheet" href="/assets/css/register.css">
+    <title>Inscription</title>
 </head>
 
 <body>
-    <div class="login-container" id="registerContainer">
-        <div class="login-header">
+    <div class="login__container">
+        <div class="login__header">
             <h2>Inscription</h2>
         </div>
 
@@ -27,30 +25,34 @@
             <?php endforeach; ?>
         </div>
 
-        <form method="POST" action="/register">
-            <div class="mb-3">
-                <label for="firstname" class="form-label"><i class="fas fa-user"></i> Prénom</label>
-                <input type="text" class="form-control input-custom" id="firstname" name="firstname" placeholder="Entrez votre Prénom">
-            </div>
-            <div class="mb-3">
-                <label for="lastname" class="form-label"><i class="fas fa-user"></i> Nom</label>
-                <input type="text" class="form-control input-custom" id="lastname" name="lastname" placeholder="Entrez votre Nom">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label"><i class="fas fa-user"></i> Email</label>
-                <input type="text" class="form-control input-custom" id="email" name="email" placeholder="Entrez votre email">
-            </div>
+        <div class="login__content">
+            <form class="form" method="POST" action="/register">
+                <div class="login__input">
+                    <input type="text" id="firstname" name="firstname" placeholder="Prénom">
+                    <input type="text" id="lastname" name="lastname" placeholder="Nom">
+                    <input type="email" id="email" name="email" placeholder="Email">
+                    <input type="password" id="password" name="password" placeholder="Mot de passe">
+                </div>
+                <p class="login__choice">Ou continuer avec :</p>
+                <div class="login__method">
 
-            <div class="mb-3">
-                <label for="password" class="form-label"><i class="fas fa-lock"></i> Mot de passe</label>
-                <input type="password" class="form-control input-custom" id="password" name="password" placeholder="Entrez votre mot de passe">
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100 btn-custom">S'inscrire</button>
-        </form>
-
-        <div class="mt-3 text-center">
-            <a href="/login" class="btn btn-secondary">Se connecter</a>
+                    <a>
+                    </a>
+                    <a><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect width="48" height="48" fill="url(#pattern0_602_525)" />
+                            <defs>
+                                <pattern id="pattern0_602_525" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlink:href="#image0_602_525" transform="translate(-14.0417 -13.9792) scale(0.0208333)" />
+                                </pattern>
+                            </defs>
+                        </svg>
+                    </a>
+                </div>
+                <div class="login__button">
+                    <button type="submit">S'inscrire</button>
+                    <a href="/login">Se connecter</a>
+                </div>
+            </form>
         </div>
     </div>
 </body>

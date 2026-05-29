@@ -6,8 +6,16 @@
   padding: 0;
 }
 
+:root {
+  --bgColor: #f1f1f1;
+}
+
+.dark {
+  --bgColor: black;
+}
+
 body {
-  background-color: #f1f1f1;
+  background-color: var(--bgColor);
   font-family: sans-serif;
 }
 
@@ -157,12 +165,112 @@ body {
   background-color: oklch(81.982% 0.00187 248.979 / 0.1);
 }
 
+.logout {
+  background-color: none;
+  border: none;
+  color: oklch(62.006% 0.00007 271.152);
+}
+
 .container {
   display: flex;
   background-color: #f8f8f8;
   width: 95%;
   height: 95%;
   border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+}
+
+.affiche {
+  position: absolute;
+  color: #2020203d;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  left: 35px;
+  top: 45px;
+}
+
+.search__content {
+  display: flex;
+  background-color: oklch(65.945% 0.16267 256.231 / 0.068);
+  padding: 8px;
+  border-radius: 25px;
+  justify-content: space-between;
+  width: 800px;
+}
+
+.content__button {
+  display: flex;
+  gap: 23px;
+}
+
+.content__buttonStyle {
+  display: flex;
+  background: white;
+  border-radius: 20px;
+}
+
+.content__buttonStyle a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 29px;
+}
+
+.searchbar {
+  display: flex;
+}
+
+.searchbar__bar {
+  border-radius: 15px;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+  padding: 0 6px;
+}
+
+.searchbar__bar input {
+  border: none;
+}
+
+.searchbar__bar input:focus {
+  outline: none;
+}
+
+.button--list {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content__buttonStyle .active {
+  background-color: #2f80ed33;
+  border: 1px solid #2f80ed80;
+}
+
+.content__buttonStyle .active path {
+  fill: #2f80ed;
+}
+
+.button--list {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.button--square {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.button--filter {
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  width: 89px;
   justify-content: center;
   align-items: center;
 }
@@ -233,4 +341,24 @@ th {
 
 .user-table__cell--actions .delete-button svg:hover {
   color: red;
+}
+
+.pagination {
+  display: flex;
+  gap: 32px;
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+}
+
+.pagination a {
+  background-color: white;
+  border-radius: 100%;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #8f8f8f91;
+}
+
+.pagination a .active {
+  background-color: #2f80ed33;
+  border: 1px solid #2f80ed80;
 }

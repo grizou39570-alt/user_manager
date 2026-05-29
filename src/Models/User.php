@@ -23,6 +23,7 @@ class User
   {
     return $this->id;
   }
+
   public function setId(int $_id): void
   {
     $this->id = $_id;
@@ -32,6 +33,7 @@ class User
   {
     return $this->nom;
   }
+
   public function setNom(string $_nom): void
   {
     $this->nom = $_nom;
@@ -41,6 +43,7 @@ class User
   {
     return $this->email;
   }
+
   public function setEmail(string $_email): void
   {
     $this->email = $_email;
